@@ -2,22 +2,26 @@ import Ball from './ball.js';
 import Racket from './racket.js';
 
 let ball;
-let racket;
+let player;
+let computer;
 
 function setup() {
     console.log(ball);
     createCanvas(800, 400);
     ball = new Ball(width / 2, height / 2, 2, 2, 20);
     setRandomSpeed();
-    racket = new Racket(20, height / 2, 10, 60);
+    player = new Racket(20, height / 2, 10, 60);
+    computer = new Racket(width - 40, height / 2, 10, 60);
 }
 
 function draw() {
     background(220);
     ball.update();
     ball.draw();
-    racket.update(ball);
-    racket.draw();
+    player.update(ball, true);
+    player.draw();
+    computer.update(ball, false);
+    computer.draw();
 }
 
 function setRandomSpeed() {

@@ -6,16 +6,32 @@ export default class Racket {
         this.height = height;
     }
 
-    update(ball) {
+    update(ball, isPlayer) {
         // Update the racket's position based on user input or game logic
-        // For example, you can use keyboard events to move the racket up and down
+        // For example, you can use keyboard events to move the player's racket up and down
         // You can also add collision detection logic here to check if the racket hits the ball
 
         // Example code:
-        if (keyIsDown(UP_ARROW)) {
-            this.y -= 5; // Move the racket up by 5 units
-        } else if (keyIsDown(DOWN_ARROW)) {
-            this.y += 5; // Move the racket down by 5 units
+        if (isPlayer) {
+            if (keyIsDown(UP_ARROW)) {
+                this.y -= 5; // Move the racket up by 5 units
+            } else if (keyIsDown(DOWN_ARROW)) {
+                this.y += 5; // Move the racket down by 5 units
+            }
+        } else {
+            // Add logic for computer-controlled racket movement here
+            // For example, you can use AI algorithms to determine the racket's movement
+            // You can also add randomization to make the computer-controlled racket less predictable
+
+            // Calculate the center of the racket
+            let racketCenter = this.y + this.height / 2;
+
+            // Move the racket towards the ball's y position
+            if (ball.y < racketCenter) {
+                this.y -= 3; // Move the racket up by 3 units
+            } else if (ball.y > racketCenter) {
+                this.y += 3; // Move the racket down by 3 units
+            }
         }
 
         if (this.y < 0) {
