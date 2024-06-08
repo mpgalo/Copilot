@@ -16,7 +16,7 @@ function draw() {
     background(220);
     ball.update();
     ball.draw();
-    racket.update();
+    racket.update(ball);
     racket.draw();
 }
 

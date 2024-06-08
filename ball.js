@@ -56,4 +56,13 @@ export default class Ball {
             this.speedY *= -1;
         }
     }
+
+    /**
+     * Changes the direction of the ball.
+     */
+    changeDirection() {
+        this.speedX *= -1;
+        this.speedY *= -1;
+        console.log("bateu");
+    }
 }

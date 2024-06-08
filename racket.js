@@ -6,7 +6,7 @@ export default class Racket {
         this.height = height;
     }
 
-    update() {
+    update(ball) {
         // Update the racket's position based on user input or game logic
         // For example, you can use keyboard events to move the racket up and down
         // You can also add collision detection logic here to check if the racket hits the ball
@@ -22,38 +22,40 @@ export default class Racket {
             this.y = 0;
         } else if (this.y > height - this.height) {
             this.y = height - this.height;
-        }
+        }    
 
         
         // Check if the racket collides with the ball
-        // if (this.collidesWith(ball)) {
-        //     // Handle the collision logic here
-        //     // For example, you can change the ball's direction or increase the score
-        //     // Example code:
-        //     //ball.changeDirection();
-        //     //score.increase();
-        // }
+        if (this.collidesWith(ball)) {
+            // Handle the collision logic here
+            // For example, you can change the ball's direction or increase the score
+            // Example code:
+            ball.changeDirection();
+            //score.increase();
+        }
 
-        // // Function to check if the racket collides with the ball
-        // function collidesWith(ball) {
-        //     // Calculate the edges of the racket and the ball
-        //     let racketLeft = this.x;
-        //     let racketRight = this.x + this.width;
-        //     let racketTop = this.y;
-        //     let racketBottom = this.y + this.height;
-        //     let ballLeft = ball.x - ball.radius;
-        //     let ballRight = ball.x + ball.radius;
-        //     let ballTop = ball.y - ball.radius;
-        //     let ballBottom = ball.y + ball.radius;
+        
 
-        //     // Check if the edges overlap
-        //     if (racketLeft < ballRight && racketRight > ballLeft && racketTop < ballBottom && racketBottom > ballTop) {
-        //         return true; // Collision detected
-        //     } else {
-        //         return false; // No collision
-        //     }
-        // }
+    }
 
+    // Function to check if the racket collides with the ball
+    collidesWith(ball) {
+        // Calculate the edges of the racket and the ball
+        let racketLeft = this.x;
+        let racketRight = this.x + this.width;
+        let racketTop = this.y;
+        let racketBottom = this.y + this.height;
+        let ballLeft = ball.x - ball.radius;
+        let ballRight = ball.x + ball.radius;
+        let ballTop = ball.y - ball.radius;
+        let ballBottom = ball.y + ball.radius;
+
+        // Check if the edges overlap
+        if (racketLeft < ballRight && racketRight > ballLeft && racketTop < ballBottom && racketBottom > ballTop) {
+            return true; // Collision detected
+        } else {
+            return false; // No collision
+        }
     }
 
     draw() {
