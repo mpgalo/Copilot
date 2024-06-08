@@ -28,9 +28,9 @@ export default class Racket {
 
             // Move the racket towards the ball's y position
             if (ball.y < racketCenter) {
-                this.y -= 3; // Move the racket up by 3 units
+                this.y -= 5; // Move the racket up by 5 units
             } else if (ball.y > racketCenter) {
-                this.y += 3; // Move the racket down by 3 units
+                this.y += 5; // Move the racket down by 5 units
             }
         }
 
@@ -42,11 +42,9 @@ export default class Racket {
 
         
         // Check if the racket collides with the ball
-        if (this.collidesWith(ball)) {
-            // Handle the collision logic here
-            // For example, you can change the ball's direction or increase the score
-            // Example code:
+        if (this.collidesWith(ball)) {            
             ball.changeDirection();
+            ball.raiseSpeed();
             //score.increase();
         }
 

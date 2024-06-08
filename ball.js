@@ -63,6 +63,14 @@ export default class Ball {
     changeDirection() {
         this.speedX *= -1;
         this.speedY *= -1;
-        console.log("bateu");
+        
+    }
+
+    /**
+     * Increases the speed of the ball by a small amount.
+     */
+    raiseSpeed() {
+        this.speedX *= 1.1;
+        this.speedY *= 1.1;
     }
 }
